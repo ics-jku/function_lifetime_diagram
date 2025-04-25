@@ -1,0 +1,83 @@
+{
+    "run_config": {
+        "target" : "qemu",
+        "xlspike" : {
+            "timeout": 120
+        },
+        "qemu" : {
+            "timeout": 240
+        }
+    },
+    "parallel": "-j",
+    "build_target": "clean all",
+    "build_config": {
+        "SOC": "demosoc",
+        "BOARD": "nuclei_fpga_eval",
+        "STDCLIB": "libncrt_small"
+    },
+    "build_configs": {
+        "n201-ilm": {"DOWNLOAD": "ilm", "CORE": "n201", "ARCH_EXT": ""},
+        "n201e-ilm": {"DOWNLOAD": "ilm", "CORE": "n201e", "ARCH_EXT": ""},
+        "n205e-ilm": {"DOWNLOAD": "ilm", "CORE": "n205e", "ARCH_EXT": ""},
+        "n305-ilm": {"DOWNLOAD": "ilm", "CORE": "n305", "ARCH_EXT": ""},
+        "n305b-ilm": {"DOWNLOAD": "ilm", "CORE": "n305", "ARCH_EXT": "b"},
+        "n305bp-ilm": {"DOWNLOAD": "ilm", "CORE": "n305", "ARCH_EXT": "bp"},
+        "n307fd-ilm": {"DOWNLOAD": "ilm", "CORE": "n307fd", "ARCH_EXT": ""},
+        "n307fdb-ilm": {"DOWNLOAD": "ilm", "CORE": "n307fd", "ARCH_EXT": "b"},
+        "n307fdbp-ilm": {"DOWNLOAD": "ilm", "CORE": "n307fd", "ARCH_EXT": "bp"}
+    },
+    "appconfig": {
+        "application/baremetal/demo_dsp": {
+            "build_configs" : {
+            },
+            "checks": {
+                "PASS": ["all test are passed"],
+                "FAIL": ["test error apprears", "MEPC"]
+            }
+        },
+        "application/rtthread/msh": {
+            "build_config" : {},
+            "checks": {
+                "PASS": ["msh >", "Hello RT-Thread!"]
+            }
+        },
+        "application/baremetal/benchmark/dhrystone": {
+            "checks": {
+                "PASS": ["1000000/(User_Cycle/Number_Of_Runs)", "Measured time too small"]
+            }
+        },
+        "application/baremetal/benchmark/coremark": {
+            "build_configs" : {
+                "n205-optimized": {"CORE": "n205", "CPU_SERIES": "200"},
+                "n305-optimized": {"CORE": "n305", "CPU_SERIES": "300"},
+                "n600f-optimized": {"CORE": "n600f", "CPU_SERIES": "600"},
+                "n900fd-optimized": {"CORE": "n900fd", "CPU_SERIES": "900"}
+            }
+        }
+    },
+    "expecteds": {
+        "application/baremetal/demo_dsp" : {
+            "n201-ilm": { "build": false, "run": false },
+            "n201e-ilm": { "build": false, "run": false },
+            "n205e-ilm": { "build": false, "run": false },
+            "n305b-ilm": { "build": false, "run": false },
+            "n305bp-ilm": { "build": false, "run": false },
+            "n307fdb-ilm": { "build": false, "run": false },
+            "n307fdbp-ilm": { "build": false, "run": false }
+        },
+        "application/baremetal/benchmark/whetstone" : {
+            "n201-ilm": { "build": true, "run": false },
+            "n201e-ilm" : {"build": true, "run": false}
+        },
+        "application" : {
+            "n201e-ilm" : {"build": true, "run": false}
+        }
+    },
+    "expected": {
+        "application/baremetal/demo_nice": {"build": true, "run": true},
+        "application/rtthread/msh" : {"build": true, "run": false},
+        "application/baremetal/demo_spmp": {"build": true, "run": true},
+        "application/baremetal/demo_smode_eclic": {"build": true, "run": true},
+        "test/core": {"build": false, "run": false}
+    }
+}

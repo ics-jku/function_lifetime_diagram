@@ -1,0 +1,10 @@
+{
+    "build_config": {
+        "SOC": "demosoc",
+        "DOWNLOAD": "ilm",
+        "CPU_SERIES": "200"
+    },
+    "build_configs": {
+        "rv32imacb": {"CORE":"n203", "ARCH_EXT":"b"}
+    }
+}

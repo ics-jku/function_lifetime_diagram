@@ -1,0 +1,41 @@
+{
+    "run_config": {
+        "target" : "qemu",
+        "hardware" : {
+            "baudrate": 115200,
+            "timeout": 60
+        },
+        "qemu" : {
+            "timeout": 60
+        }
+    },
+    "build_target": "clean all",
+    "build_config": {
+        "SOC": "gd32vf103",
+        "BOARD": "gd32vf103v_rvstar",
+        "DOWNLOAD": "flashxip",
+        "ARCH_EXT": ""
+    },
+    "appconfig": {
+        "application/rtthread/msh": {
+            "build_config" : {},
+            "checks": {
+                "PASS": ["msh >", "Hello RT-Thread!"]
+            }
+        }
+    },
+    "expected": {
+        "application/baremetal/demo_nice" : {
+            "run": true,
+            "build": true
+        },
+        "application/baremetal/demo_spmp" : {
+            "run": false,
+            "build": false
+        },
+        "application/baremetal/demo_smode_eclic": {
+            "run": true,
+            "build": true
+        }
+    }
+}
