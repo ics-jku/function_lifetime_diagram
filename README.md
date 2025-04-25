@@ -39,6 +39,7 @@ make -j
 cd ..
 ```
 <p color="red">Don't forget to create the DynamoRIO bin folder to your $PATH and add the necessary environment variable:</p>
+
 ```
 export DynamoRIO_DIR=<BUILD_FOLDER>
 ```
