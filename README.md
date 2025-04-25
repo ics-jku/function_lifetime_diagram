@@ -53,6 +53,7 @@ cd fld/tracer
 mkdir build
 cmake ..
 make
+cd ../..
 ```
 
 5. Build Examples
@@ -60,6 +61,7 @@ For each of the examples you can run make to build it.
 ```
 cd example/<EXAMPLE>
 make
+cd ..
 ```
 
 When building the MNIST example you additionally have to compile the virtual environment for gd32 to run it later.
@@ -68,6 +70,7 @@ cd riscv-vp-plusplus/env/gd32/vp-breadboard
 mkdir build && cd build
 cmake ..
 make
+cd ../../../../
 ```
 
 6. Modify config files
