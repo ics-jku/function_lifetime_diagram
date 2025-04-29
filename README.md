@@ -89,3 +89,16 @@ To run the MNIST exmple, you first have to start the virtual environment for gd3
 ```
 ./riscv-vp-plusplus/env/gd32/vp-breadboard/build/vp-breadboard
 ```
+
+## *Boosting SW Development Efficiency with Function Lifetime Diagrams*
+
+[Christoph Hazott and Daniel Große. Boosting SW Development Efficiency with Function Lifetime Diagrams. IEEE Symposium on Design and Diagnostics of Electronic Circuits and Systems (DDECS)](https://ics.jku.at/files/2025DDECS_FunctionLifetimeDiagram.pdf)
+
+```
+@inproceedings{HG:2025,
+  author = {Christoph Hazott and Daniel Gro{\ss}e},
+  title = {Boosting SW Development Efficiency with Function Lifetime Diagrams},
+  booktitle = {IEEE Symposium on Design and Diagnostics of Electronic Circuits and Systems (DDECS)},
+  year = 2025
+}
+```
